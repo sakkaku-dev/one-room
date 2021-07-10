@@ -13,6 +13,9 @@ func _init(device = 0, joypad = false):
 	self.device_id = device
 	self.joypad_input = joypad
 
+func _unhandled_input(event):
+	handle_input(event)
+
 
 func is_player_event(event: InputEvent) -> bool:
 	return joypad_input == _is_joypad_event(event) and device_id == event.device
