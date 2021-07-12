@@ -140,9 +140,13 @@ Display=8
 
 [application]
 
-config/name="godot-template"
+config/name="one-room"
 run/main_scene="res://scenes/splashscreen/SplashScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://scenes/Game.gd"
 
 [display]
 

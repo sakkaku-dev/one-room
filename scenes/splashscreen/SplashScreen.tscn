@@ -31,10 +31,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
-margin_left = 242.0
-margin_top = 180.0
-margin_right = 782.0
-margin_bottom = 420.0
+margin_left = 22.0
+margin_top = 108.0
+margin_right = 1001.0
+margin_bottom = 491.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
