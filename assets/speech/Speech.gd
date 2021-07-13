@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Speech
+
 enum BubbleSize {
 	SMALL,
 	MEDIUM,
@@ -16,26 +18,26 @@ export var duration = 0.0
 
 
 const sizes = [
-	{"pos": Vector2(-19, -9), "width": 330, "sprite": "speech-bubble-s.png" },
-	{"pos": Vector2(-26, -8), "width": 460, "sprite": "speech-bubble-m.png" },
-	{"pos": Vector2(-37, -11), "width": 680, "sprite": "speech-bubble-l.png" }
+	{"pos": Vector2(-10, -3), "width": 185, "sprite": "speech-bubble-s.png", "root_pos": Vector2(0, 0) },
+	{"pos": Vector2(-13, -6), "width": 255, "sprite": "speech-bubble-m.png", "root_pos": Vector2(-3, -1) },
+	{"pos": Vector2(-19, -6), "width": 360, "sprite": "speech-bubble-l.png", "root_pos": Vector2(-10, -2) }
 ]
 
 func _ready():
 	label.text = text
 	_set_size(size)
 	
-	var dur = duration if duration != 0 else _get_default_duration()
+	var dur = duration if duration <= 0 else _get_default_duration()
 	timer.start(duration)
 
 
 func _get_default_duration() -> float:
 	if size == BubbleSize.SMALL:
-		return 2.0
+		return 3.0
 	elif size == BubbleSize.MEDIUM:
-		return 4.0
+		return 6.0
 	
-	return 6.0
+	return 9.0
 
 
 func _set_size(size_idx: int) -> void:
@@ -51,6 +53,8 @@ func _set_size(size_idx: int) -> void:
 		var texture = ImageTexture.new()
 		texture.create_from_image(image, 0)
 		sprite.texture = texture
+	
+	position = size["root_pos"]
 
 
 func _on_Timer_timeout():
